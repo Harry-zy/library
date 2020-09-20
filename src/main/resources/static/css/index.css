@@ -62,3 +62,11 @@ fieldset[disabled] .btn-pink.focus {
     color: #FF66FF;
     background-color: #fff;
 }
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;
+}
