@@ -1,5 +1,23 @@
 body {
-    background:  url("../img/index_bg.jpg");
+    background: url("../img/index_bg_1.jpg");
+    animation-name: index_bg;
+    animation-duration: 20s;
+    /*变换时间*/
+    animation-delay: 0s;
+    /*动画开始时间*/
+    animation-iteration-count: infinite;
+    /*下一周期循环播放*/
+    animation-play-state: running;
+    /*动画开始运行*/
+    animation-timing-function: ease-in-out;
+}
+@keyframes index_bg
+{
+    0%   {background:url("../img/index_bg_1.jpg");}
+    25%  {background:url("../img/index_bg_2.jpg");}
+    50%  {background:url("../img/index_bg_3.jpg");}
+    75% {background:url("../img/index_bg_4.jpg");}
+    100% {background:url("../img/index_bg_1.jpg");}
 }
 .box-shadow {
     background: rgba(255, 255, 255, 0.2);
