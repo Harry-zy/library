@@ -3,8 +3,6 @@ package com.danei.library.controller;
 
 import com.danei.library.pojo.User;
 import com.danei.library.service.IUserService;
-import jdk.nashorn.internal.objects.annotations.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
