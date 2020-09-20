@@ -1,0 +1,61 @@
+.box-shadow {
+    background: rgba(255, 255, 255, 0.2);
+    margin-top: 20%;
+}
+.btn-pink {
+    color: #fff;
+    background-color: #FF66FF;
+    border-color: #FF66CC;
+}
+.btn-pink:focus,
+.btn-pink.focus {
+    color: #fff;
+    background-color: #FF33FF;
+    border-color: #FF00CC;
+}
+.btn-pink:hover {
+    color: #fff;
+    background-color: #FF33FF;
+    border-color: #FF33CC;
+}
+.btn-pink:active,
+.btn-pink.active,
+.open > .dropdown-toggle.btn-pink {
+    color: #fff;
+    background-color: #FF33FF;
+    border-color: #FF33CC;
+}
+.btn-pink:active:hover,
+.btn-pink.active:hover,
+.open > .dropdown-toggle.btn-pink:hover,
+.btn-pink:active:focus,
+.btn-pink.active:focus,
+.open > .dropdown-toggle.btn-pink:focus,
+.btn-pink:active.focus,
+.btn-pink.active.focus,
+.open > .dropdown-toggle.btn-pink.focus {
+    color: #fff;
+    background-color: #FF33CC;
+    border-color: #FF00CC;
+}
+.btn-pink:active,
+.btn-pink.active,
+.open > .dropdown-toggle.btn-pink {
+    background-image: none;
+}
+.btn-pink.disabled:hover,
+.btn-pink[disabled]:hover,
+fieldset[disabled] .btn-pink:hover,
+.btn-pink.disabled:focus,
+.btn-pink[disabled]:focus,
+fieldset[disabled] .btn-pink:focus,
+.btn-pink.disabled.focus,
+.btn-pink[disabled].focus,
+fieldset[disabled] .btn-pink.focus {
+    background-color: #FF66FF;
+    border-color: #FF66CC;
+}
+.btn-pink .badge {
+    color: #FF66FF;
+    background-color: #fff;
+}
