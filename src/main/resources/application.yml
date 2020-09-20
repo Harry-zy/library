@@ -1,6 +1,5 @@
 server:
   port: 80
-
 spring:
   datasource:
     username: root
@@ -9,7 +8,6 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
   resources:
     static-locations: classpath:/static/, classpath:/templates/
-
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
