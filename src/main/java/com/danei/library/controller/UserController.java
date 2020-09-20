@@ -21,11 +21,10 @@ public class UserController {
     @Resource
     private IUserService userService;
 
-    @PostMapping("/saveUser")
-    public boolean saveUser(){
-        User user = new User();
-        user.setUsername("小歘歘");
-        user.setPassword("5203344");
+    @PostMapping(produces = "application/json;charset=UTF-8")
+    public boolean saveUser(User user){
+        user.setUsername(user.getUsername());
+        user.setPassword(user.getPassword());
         return userService.save(user);
     }
 }
