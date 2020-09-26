@@ -6,7 +6,7 @@ $(function () {
     $("#register").on("click", function () {
         register();
     });
-    $("#submit").on("click", function () {
+    $("#register_submit").on("click", function () {
         submit();
     });
 });
@@ -16,13 +16,31 @@ function register() {
 }
 
 function submit() {
+    // let res;
+    // res.isSusses = undefined;
+    // res.msg = undefined;
     $.ajax({
         url: hostPath + "/user",
         type: "POST",
-        dataType: "application/json;charset=UTF-8",
-        data: {username: "小歘歘", password: "5203344"},
-        success: function (data) {
-            // data = jQuery.parseJSON(data);  //dataType指明了返回数据为json类型，故不需要再反序列化
+        dataType: "json",
+        data: {
+            username: "dfs",
+            password: "5203344",
+            nickname: "小歘歘"
+        },
+        success: function (res) {
+            let success = res.success;
+            if (success) {
+                alert(res.success);
+            } else {
+                alert(res.msg);
+            }
+        },
+        error: function (errorInfo) {
+            let alertMsg = '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert">&times;</a>' +
+                '<h1 style="text-align: center">' + JSON.parse(errorInfo.responseText).message + ":" + errorInfo.status + '</h1>' +
+                '</div>';
+            $("body").prepend(alertMsg);
         }
     });
 }

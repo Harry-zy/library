@@ -16,9 +16,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class User implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class User {
 
     /**
      * 主键
@@ -35,6 +33,11 @@ public class User implements Serializable {
      * 密码
      */
     private String password;
+
+    /**
+     * 密码
+     */
+    private String nickname;
 
 
 }
