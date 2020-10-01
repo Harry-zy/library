@@ -19,6 +19,7 @@ import javax.annotation.Resource;
 public class UserServiceImpl implements IUserService {
 	@Resource
 	IUserDao userDao;
+
 	@Override
 	public boolean save(User user) {
 		try {

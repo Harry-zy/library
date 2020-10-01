@@ -8,5 +8,11 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  *	用户Dao接口
  */
 public interface IRoleDao extends JpaRepository<Role, String>, JpaSpecificationExecutor<Role> {
+	/**
+	 * 根据角色名查询角色
+	 *
+	 * @param roleName 角色名
+	 * @return 角色
+	 */
 	Role findByRoleName(String roleName);
 }
