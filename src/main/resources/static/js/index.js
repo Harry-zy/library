@@ -6,28 +6,29 @@ $(function () {
     modal();
     passwordOpen();
     $("#register_submit").on("click", function () {
-        if ($("#registerModal [name='password']").val() === $("#registerModal [name='confirmPassword']").val()) {
+        let confirmPassword = $(".confirmPassword");
+        if ($("#registerModal .password").val() === confirmPassword.val()) {
             submit();
         } else {
-            $("#registerModal [name='confirmPassword']").focus();
+            confirmPassword.focus();
         }
     });
 });
 
 function passwordOpen() {
-    $("input[name='confirmPasswordOpen']").hide();
-    $("input[name='passwordOpen']").hide();
+    $(".confirmPasswordOpen").hide();
+    $(".passwordOpen").hide();
     $(".glyphicon-eye-open").on("click", function () {
         $(".glyphicon-eye-open").hide();
         $(".glyphicon-eye-close").show();
-        $("#registerModal [name='passwordOpen']").val($("#registerModal [name='password']").hide().val()).show();
-        $("input[name='confirmPasswordOpen']").val($("input[name='confirmPassword']").hide().val()).show();
+        $(".passwordOpen").val($("#registerModal .password").hide().val()).show();
+        $(".confirmPasswordOpen").val($(".confirmPassword").hide().val()).show();
     });
     $(".glyphicon-eye-close").hide().on("click", function () {
         $(".glyphicon-eye-close").hide();
         $(".glyphicon-eye-open").show();
-        $("#registerModal [name='password']").val($("#registerModal [name='passwordOpen']").hide().val()).show();
-        $("input[name='confirmPassword']").val($("input[name='confirmPasswordOpen']").hide().val()).show();
+        $("#registerModal .password").val($(".passwordOpen").hide().val()).show();
+        $(".confirmPassword").val($(".confirmPasswordOpen").hide().val()).show();
     });
 }
 
@@ -44,25 +45,19 @@ function modal() {
 }
 
 function submit() {
-    let username = $("#registerModal [name='username']").val();
-    let password = $("#registerModal [name='password']").val();
-    let nickname = $("#registerModal [name='nickname']").val();
     $.ajax({
         url: hostPath + "/user",
         type: "POST",
+        contentType: "application/json;charset=UTF-8",
         dataType: "json",
-        data: {
-            username: username,
-            password: password,
-            nickname: nickname
-        },
-        success: function (res) {
-            if (res.success) {
-                $("#registerModal [name='username']").val("");
-                $("#registerModal [name='nickname']").val("");
-                $(window).attr('location',hostPath+"/success/注册");
+        data: DataDeal.formToJson($('#register_form').serialize()),
+        success: function (data) {
+            if (data.success) {
+                $("#registerModal .username").val("");
+                $(".nickname").val("");
+                $(window).attr('location', hostPath + "/success/注册");
             } else {
-                alert(res["msg"]);
+                alert(data["msg"]);
             }
         },
         error: function (errorInfo) {
@@ -73,3 +68,12 @@ function submit() {
         }
     });
 }
+
+const DataDeal = {
+    formToJson: function (data) {
+        data = data.replace(/&/g, "\",\"");
+        data = data.replace(/=/g, "\":\"");
+        data = "{\"" + data + "\"}";
+        return data;
+    },
+};

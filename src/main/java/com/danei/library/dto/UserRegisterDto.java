@@ -12,8 +12,6 @@ import javax.validation.constraints.NotBlank;
  * @Date 2020/9/26 12:12
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 public class UserRegisterDto {
 
 	/**

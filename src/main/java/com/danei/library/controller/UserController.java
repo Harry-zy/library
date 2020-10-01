@@ -29,7 +29,7 @@ public class UserController {
 	private IUserService userService;
 
 	@PostMapping(produces = "application/json;charset=UTF-8")
-	public JsonResult<UserRegisterDto> saveUser(@Valid UserRegisterDto userRegisterDto, BindingResult bindingResult) {
+	public JsonResult<UserRegisterDto> saveUser(@RequestBody @Valid UserRegisterDto userRegisterDto, BindingResult bindingResult) {
 		JsonResult<UserRegisterDto> jr = new JsonResult<>();
 		if (bindingResult.hasErrors()) {
 			jr.createErrorJsonResult(bindingResult);
@@ -51,7 +51,7 @@ public class UserController {
 		user.setCreator(user.getId());
 		user.setCreateTime(new Date());
 		if (userService.save(user)) {
-			return jr.createSuccessJsonResult();
+			return jr.createSuccessJsonResult("注册成功!");
 		} else {
 			return jr.createErrorJsonResult("注册失败,请稍后再试!");
 		}
