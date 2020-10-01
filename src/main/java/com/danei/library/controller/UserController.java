@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.Date;
 
 /**
  * <p>
@@ -45,16 +46,14 @@ public class UserController {
 		if (count > 0) {
 			return jr.createErrorJsonResult("昵称已存在!");
 		}
-		try {
-			User user = new User();
-			BeanUtils.copyProperties(userRegisterDto, user);
-			if (userService.save(user)) {
-				return jr.createSuccessJsonResult();
-			} else {
-				return jr.createErrorJsonResult("注册失败,请稍后再试!");
-			}
-		} catch (Exception e) {
-			return jr.createErrorJsonResult(e.getMessage());
+		User user = new User();
+		BeanUtils.copyProperties(userRegisterDto, user);
+		user.setCreator(user.getId());
+		user.setCreateTime(new Date());
+		if (userService.save(user)) {
+			return jr.createSuccessJsonResult();
+		} else {
+			return jr.createErrorJsonResult("注册失败,请稍后再试!");
 		}
 	}
 }

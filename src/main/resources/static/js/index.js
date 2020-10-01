@@ -3,37 +3,66 @@ const host = window.location.host;
 const hostPath = protocol + "//" + host
 
 $(function () {
-    $("#register").on("click", function () {
-        register();
-    });
+    modal();
+    passwordOpen();
     $("#register_submit").on("click", function () {
-        submit();
+        if ($("#registerModal [name='password']").val() === $("#registerModal [name='confirmPassword']").val()) {
+            submit();
+        } else {
+            $("#registerModal [name='confirmPassword']").focus();
+        }
     });
 });
 
-function register() {
-    window.location.href = hostPath + "/register"
+function passwordOpen() {
+    $("input[name='confirmPasswordOpen']").hide();
+    $("input[name='passwordOpen']").hide();
+    $(".glyphicon-eye-open").on("click", function () {
+        $(".glyphicon-eye-open").hide();
+        $(".glyphicon-eye-close").show();
+        $("#registerModal [name='passwordOpen']").val($("#registerModal [name='password']").hide().val()).show();
+        $("input[name='confirmPasswordOpen']").val($("input[name='confirmPassword']").hide().val()).show();
+    });
+    $(".glyphicon-eye-close").hide().on("click", function () {
+        $(".glyphicon-eye-close").hide();
+        $(".glyphicon-eye-open").show();
+        $("#registerModal [name='password']").val($("#registerModal [name='passwordOpen']").hide().val()).show();
+        $("input[name='confirmPassword']").val($("input[name='confirmPasswordOpen']").hide().val()).show();
+    });
+}
+
+function modal() {
+    $('#loginModal').modal({
+        backdrop: false
+    });
+    $("#register").on("click", function () {
+        $('#registerModal').modal({
+            backdrop: false
+        });
+        $('#loginModal').modal('hide');
+    });
 }
 
 function submit() {
-    // let res;
-    // res.isSusses = undefined;
-    // res.msg = undefined;
+    let username = $("#registerModal [name='username']").val();
+    let password = $("#registerModal [name='password']").val();
+    let nickname = $("#registerModal [name='nickname']").val();
     $.ajax({
         url: hostPath + "/user",
         type: "POST",
         dataType: "json",
         data: {
-            username: "dfs",
-            password: "5203344",
-            nickname: "小歘歘"
+            username: username,
+            password: password,
+            nickname: nickname
         },
         success: function (res) {
-            let success = res.success;
-            if (success) {
-                alert(res.success);
+            if (res.success) {
+                $("#registerModal [name='username']").val("");
+                $("#registerModal [name='nickname']").val("");
+                $(window).attr('location',hostPath+"/success/注册");
             } else {
-                alert(res.msg);
+                alert(res["msg"]);
             }
         },
         error: function (errorInfo) {

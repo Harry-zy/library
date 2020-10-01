@@ -10,7 +10,7 @@ spring:
     static-locations: classpath:/static/, classpath:/templates/
 mybatis-plus:
   configuration:
-    map-underscore-to-camel-case: true
+    map-underscore-to-camel-case: false
     auto-mapping-behavior: full
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:map/**/*Mapper.xml

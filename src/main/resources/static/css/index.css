@@ -88,3 +88,6 @@ fieldset[disabled] .btn-pink.focus {
 .btn.active.focus {
     outline: none;
 }
+.positionStatic {
+    position: static !important;
+}

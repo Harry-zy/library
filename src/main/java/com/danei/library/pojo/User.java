@@ -3,6 +3,8 @@ package com.danei.library.pojo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+
+import com.danei.library.base.BasePojo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -14,15 +16,8 @@ import lombok.experimental.Accessors;
  * @since 2020-08-31
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
-public class User {
-
-    /**
-     * 主键
-     */
-    @TableId(value = "id", type = IdType.UUID)
-    private String id;
+@EqualsAndHashCode(callSuper = true)
+public class User extends BasePojo {
 
     /**
      * 用户名
@@ -38,6 +33,4 @@ public class User {
      * 密码
      */
     private String nickname;
-
-
 }
