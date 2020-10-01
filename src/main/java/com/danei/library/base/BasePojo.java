@@ -36,7 +36,7 @@ public class BasePojo implements Serializable {
 	/**
 	 * 创建时间
 	 */
-	@Temporal(TemporalType.TIME)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createTime;
 
 	/**
@@ -48,6 +48,16 @@ public class BasePojo implements Serializable {
 	/**
 	 * 更新时间
 	 */
-	@Temporal(TemporalType.TIME)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateTime;
+
+	@PrePersist
+	private void entityBeforeInsert() {
+		setCreateTime(new Date());
+	}
+
+	@PreUpdate
+	private void entityBeforeModify() {
+		setUpdateTime(new Date());
+	}
 }

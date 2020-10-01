@@ -1,17 +1,16 @@
 package com.danei.library.controller;
 
-
 import com.danei.library.dto.UserRegisterDto;
-import com.danei.library.pojo.User;
 import com.danei.library.service.IUserService;
 import com.danei.library.utils.JsonResult;
-import org.springframework.beans.BeanUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.util.Date;
 
 /**
  * 用户控制器

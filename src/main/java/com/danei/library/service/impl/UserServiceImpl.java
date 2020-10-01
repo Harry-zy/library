@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.Date;
 
 /**
  * 用户业务实现类
@@ -25,7 +24,6 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public boolean save(UserRegisterDto userRegisterDto) {
 		User user = new User();
-		user.setCreateTime(new Date());
 		BeanUtils.copyProperties(userRegisterDto, user);
 		try {
 			this.userDao.save(user);

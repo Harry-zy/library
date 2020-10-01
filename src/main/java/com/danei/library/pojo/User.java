@@ -35,4 +35,12 @@ public class User extends BasePojo {
 	 */
 	@Column(length = 32)
 	private String nickname;
+
+	/**
+	 * 角色实体
+	 */
+	@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+	@JoinColumn(name = "roleId", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_user_to_role",
+			foreignKeyDefinition = "foreign key (roleId) REFERENCES Role (id) ON DELETE SET NULL ON UPDATE RESTRICT"))
+	private Role role;
 }
