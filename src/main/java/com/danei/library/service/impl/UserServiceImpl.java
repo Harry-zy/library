@@ -1,17 +1,47 @@
 package com.danei.library.service.impl;
 
+import com.danei.library.dao.IUserDao;
+import com.danei.library.dto.UserRegisterDto;
 import com.danei.library.pojo.User;
-import com.danei.library.mapper.UserMapper;
 import com.danei.library.service.IUserService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
+import java.util.Date;
 
 /**
- *  服务实现类
+ * 用户业务实现类
  *
  * @author Harry
- * @since 2020-08-31
+ * @Date 2020/10/1 22:44
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+@Transactional
+public class UserServiceImpl implements IUserService {
+	@Resource
+	IUserDao userDao;
+	@Override
+	public boolean save(UserRegisterDto userRegisterDto) {
+		User user = new User();
+		user.setCreateTime(new Date());
+		BeanUtils.copyProperties(userRegisterDto, user);
+		try {
+			this.userDao.save(user);
+			return Boolean.TRUE;
+		} catch (Exception e) {
+			return Boolean.FALSE;
+		}
+	}
+
+	@Override
+	public int countByUsername(String username) {
+		return this.userDao.countByUsername(username);
+	}
+
+	@Override
+	public int countByNickname(String nickname) {
+		return this.userDao.countByNickname(nickname);
+	}
 }

@@ -1,7 +1,6 @@
 package com.danei.library.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.danei.library.dto.UserRegisterDto;
 import com.danei.library.pojo.User;
 import com.danei.library.service.IUserService;
@@ -15,12 +14,10 @@ import javax.validation.Valid;
 import java.util.Date;
 
 /**
- * <p>
- * 前端控制器
- * </p>
+ * 用户控制器
  *
  * @author Harry
- * @since 2020-08-31
+ * @Date 2020/10/1 20:09
  */
 @RestController
 @RequestMapping("/user")
@@ -35,22 +32,15 @@ public class UserController {
 			jr.createErrorJsonResult(bindingResult);
 			return jr;
 		}
-		QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
-		userQueryWrapper.eq("username", userRegisterDto.getUsername());
-		int count = this.userService.count(userQueryWrapper);
+		int count = this.userService.countByUsername(userRegisterDto.getUsername());
 		if (count > 0) {
 			return jr.createErrorJsonResult("用户名已存在!");
 		}
-		userQueryWrapper.or(wrapper -> wrapper.eq("nickname", userRegisterDto.getNickname()));
-		count = this.userService.count(userQueryWrapper);
+		count = this.userService.countByNickname(userRegisterDto.getNickname());
 		if (count > 0) {
 			return jr.createErrorJsonResult("昵称已存在!");
 		}
-		User user = new User();
-		BeanUtils.copyProperties(userRegisterDto, user);
-		user.setCreator(user.getId());
-		user.setCreateTime(new Date());
-		if (userService.save(user)) {
+		if (userService.save(userRegisterDto)) {
 			return jr.createSuccessJsonResult("注册成功!");
 		} else {
 			return jr.createErrorJsonResult("注册失败,请稍后再试!");
