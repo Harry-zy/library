@@ -22,7 +22,7 @@ public class RoleServiceImplTest {
 	}
 
 	@Test
-	public void testSave() {
+	public void findByRoleName() {
 		Role role = this.roleService.findByRoleName("游客");
 		System.out.println(role);
 	}
