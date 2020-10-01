@@ -22,11 +22,12 @@ public class RoleServiceImpl implements IRoleService {
 
 	@Override
 	public boolean save(Role role) {
-		try {
-			this.roleDao.save(role);
-			return Boolean.TRUE;
-		} catch (Exception e) {
-			return Boolean.FALSE;
-		}
+		this.roleDao.save(role);
+		return Boolean.TRUE;
+	}
+
+	@Override
+	public Role findByRoleName(String roleName) {
+		return this.roleDao.findByRoleName(roleName);
 	}
 }

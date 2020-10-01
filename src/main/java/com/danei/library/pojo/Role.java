@@ -3,6 +3,7 @@ package com.danei.library.pojo;
 import com.danei.library.base.BasePojo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import javax.persistence.Entity;
  */
 @Entity
 @Data
+@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class Role extends BasePojo {
 
