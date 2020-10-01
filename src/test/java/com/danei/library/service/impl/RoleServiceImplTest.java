@@ -17,7 +17,13 @@ public class RoleServiceImplTest {
 	@Test
 	public void save() {
 		Role role = new Role();
-		role.setRoleName("管理员");
+		role.setRoleName("游客");
 		this.roleService.save(role);
+	}
+
+	@Test
+	public void testSave() {
+		Role role = this.roleService.findByRoleName("游客");
+		System.out.println(role);
 	}
 }
