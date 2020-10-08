@@ -31,7 +31,7 @@ public class User extends BasePojo {
 	private String password;
 
 	/**
-	 * 密码
+	 * 昵称
 	 */
 	@Column(length = 32)
 	private String nickname;

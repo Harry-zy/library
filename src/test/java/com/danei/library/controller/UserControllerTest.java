@@ -26,7 +26,6 @@ public class UserControllerTest {
 	private UserController userController;
 	private MockMvc mockMvc;
 
-
 	@Before
 	public void setup(){
 		mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
@@ -35,7 +34,7 @@ public class UserControllerTest {
 	@Test
 	public void saveUser() throws Exception {
 		UserRegisterDto userRegisterDto = new UserRegisterDto();
-		userRegisterDto.setUsername("yangjuju");
+//		userRegisterDto.setUsername("yangjuju");
 		userRegisterDto.setPassword("5203344");
 		userRegisterDto.setNickname("小歘歘");
 		MockHttpServletRequestBuilder params1 = MockMvcRequestBuilders.post("/user")

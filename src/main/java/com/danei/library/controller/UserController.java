@@ -48,10 +48,6 @@ public class UserController {
 		if (count > 0) {
 			return jr.createErrorJsonResult("用户名已存在!");
 		}
-		count = this.userService.countByNickname(userRegisterDto.getNickname());
-		if (count > 0) {
-			return jr.createErrorJsonResult("昵称已存在!");
-		}
 		User user = new User();
 		BeanUtils.copyProperties(userRegisterDto, user);
 		Role role = this.roleService.findByRoleName("游客");
