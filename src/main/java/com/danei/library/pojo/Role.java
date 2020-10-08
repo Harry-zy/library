@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * 角色实体类
@@ -16,7 +16,7 @@ import javax.persistence.Entity;
  */
 @Entity
 @Data
-@ToString(callSuper = true)
+//@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class Role extends BasePojo {
 
@@ -25,12 +25,21 @@ public class Role extends BasePojo {
 	/**
 	 * 角色名称
 	 */
-	@Column(length = 32, nullable = false)
+	@Column(length = 32)
 	private String roleName;
+
+	/**
+	 * 角色代码
+	 */
+	@Column(length = 32)
+	private String code;
 
 	/**
 	 * 角色描述
 	 */
 	@Column(name = "`describe`")
 	private String describe;
+
+	@ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+	private List<Permission> permissions;
 }

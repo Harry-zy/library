@@ -34,4 +34,13 @@ public interface IUserService {
 	 * @return 用户数量
 	 */
 	int countByNickname(String nickname);
+
+	/**
+	 * 根据账号密码查询用户
+	 *
+	 * @param username 用户名
+	 * @param password 密码
+	 * @return 用户
+	 */
+	User findByUsernameAndPassword(String username, String password);
 }

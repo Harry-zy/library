@@ -45,4 +45,9 @@ public class UserServiceImpl implements IUserService {
 	public int countByNickname(String nickname) {
 		return this.userDao.countByNickname(nickname);
 	}
+
+	@Override
+	public User findByUsernameAndPassword(String username, String password) {
+		return this.userDao.findByUsernameAndPassword(username, password);
+	}
 }

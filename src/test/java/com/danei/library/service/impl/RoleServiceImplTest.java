@@ -17,7 +17,8 @@ public class RoleServiceImplTest {
 	@Test
 	public void save() {
 		Role role = new Role();
-		role.setRoleName("游客");
+		role.setRoleName("管理员");
+		role.setCode("gly");
 		this.roleService.save(role);
 	}
 

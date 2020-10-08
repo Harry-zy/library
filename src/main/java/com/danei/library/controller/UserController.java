@@ -31,14 +31,14 @@ public class UserController {
 	private IRoleService roleService;
 
 	/**
-	 * 用户注册控制器
+	 * 用户注册
 	 *
 	 * @param userRegisterDto 用户注册Dto
 	 * @param bindingResult 校验结果
 	 * @return 注册结果
 	 */
 	@PostMapping(produces = "application/json;charset=UTF-8")
-	public JsonResult<UserRegisterDto> saveUser(@RequestBody @Valid UserRegisterDto userRegisterDto, BindingResult bindingResult) {
+	public JsonResult<UserRegisterDto> register(@RequestBody @Valid UserRegisterDto userRegisterDto, BindingResult bindingResult) {
 		JsonResult<UserRegisterDto> jr = new JsonResult<>();
 		if (bindingResult.hasErrors()) {
 			jr.createErrorJsonResult(bindingResult);

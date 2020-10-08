@@ -2,9 +2,12 @@
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>杨居居图书馆</title>
+    <title>杨居居图书馆-成功页面</title>
 </head>
 <body>
-<p th:text="${function} + 成功 + '!'"></p>
+<p th:if="${nickname == null}" th:text="${function} + 成功 + '!'"></p>
+<p th:if="${nickname != null}" th:text="${roleName} + ':' + ${nickname} + ${function} + 成功 + '!'"></p>
+<a th:if="${nickname != null && roleName == '管理员'}" href="http://localhost:8080/role">角色管理</a>
+<a th:if="${nickname != null && roleName == '管理员'}" href="http://localhost:8080/per">权限管理</a>
 </body>
 </html>

@@ -2,12 +2,10 @@ package com.danei.library.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.danei.library.dto.UserRegisterDto;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -21,25 +19,19 @@ import javax.annotation.Resource;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-public class UserControllerTest {
+public class PermissionControllerTest {
 	@Resource
-	private UserController userController;
+	private PermissionController permissionController;
 	private MockMvc mockMvc;
 
 	@Before
 	public void setup(){
-		mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
+		mockMvc = MockMvcBuilders.standaloneSetup(permissionController).build();
 	}
 
 	@Test
 	public void saveUser() throws Exception {
-		UserRegisterDto userRegisterDto = new UserRegisterDto();
-		userRegisterDto.setUsername("yangjuju");
-		userRegisterDto.setPassword("5203344");
-		userRegisterDto.setNickname("小歘歘");
-		MockHttpServletRequestBuilder params1 = MockMvcRequestBuilders.post("/user")
-				.contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-				.content(JSON.toJSONString(userRegisterDto));
+		MockHttpServletRequestBuilder params1 = MockMvcRequestBuilders.patch("/per");
 		MvcResult mvcResult = mockMvc.perform(params1)
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andDo(MockMvcResultHandlers.print())

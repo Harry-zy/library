@@ -5,13 +5,13 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 /**
- * 用户注册Dto
+ * 登录Dto
  *
  * @author Harry
  * @Date 2020/9/26 12:12
  */
 @Data
-public class UserRegisterDto {
+public class LoginDto {
 
 	/**
 	 * 用户名
@@ -24,10 +24,4 @@ public class UserRegisterDto {
 	 */
 	@NotBlank(message = "密码不能为空!")
 	private String password;
-
-	/**
-	 * 昵称
-	 */
-	@NotBlank(message = "昵称不能为空!")
-	private String nickname;
 }

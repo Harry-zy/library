@@ -30,4 +30,9 @@ public class RoleServiceImpl implements IRoleService {
 	public Role findByRoleName(String roleName) {
 		return this.roleDao.findByRoleName(roleName);
 	}
+
+	@Override
+	public int countByCode(String code) {
+		return this.roleDao.countByCode(code);
+	}
 }
