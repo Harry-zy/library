@@ -95,7 +95,7 @@ function login(){
             if (data.success) {
                 $("#loginModal .username").val("");
                 $("#loginModal .password").val("");
-                $(window).attr('location', hostPath + "/success/登录/" + data.t.nickname + "/" + data.t.role.roleName);
+                $(window).attr('location', hostPath + "/success/登录/");
             } else {
                 alert(data["msg"]);
             }

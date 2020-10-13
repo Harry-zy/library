@@ -6,8 +6,5 @@
 </head>
 <body>
 <p th:if="${nickname == null}" th:text="${function} + 成功 + '!'"></p>
-<p th:if="${nickname != null}" th:text="${roleName} + ':' + ${nickname} + ${function} + 成功 + '!'"></p>
-<a th:if="${nickname != null && roleName == '管理员'}" href="http://localhost:8080/role">角色管理</a>
-<a th:if="${nickname != null && roleName == '管理员'}" href="http://localhost:8080/per">权限管理</a>
 </body>
 </html>
